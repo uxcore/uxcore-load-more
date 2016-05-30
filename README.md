@@ -39,7 +39,6 @@ class Demo extends React.Component {
    // ....
    
     me.setState({
-      lines: lines,
       loadState: 'load'
     })
 
