@@ -41,12 +41,11 @@ class LoadMore extends React.Component {
       if (me.isElementInView(me.refs.viewMore)) {
         props.onLoadMore();
       }
-
     }
   }
 
-  /*
-    滚动事件
+  /**
+   * 滚动事件
    */
   onScroll() {
     let me = this,
@@ -59,8 +58,8 @@ class LoadMore extends React.Component {
       scrollTimer = setTimeout(me.onScrollStop.bind(me), props.viewLoadDelay);
   }
 
-  /*
-    滚动停止一段时间之后才判断
+  /**
+   * 滚动停止一段时间之后才判断
    */
   onScrollStop() {
     let me = this,
@@ -111,15 +110,15 @@ class LoadMore extends React.Component {
 
     switch (props.status) {
       case 'loaded':
-        res = <a href="javascript:void(0)" ref="viewMore" onClick={me.onClick.bind(me)}>{'loadText' in props ? props.loadText : lang.viewMore}</a>;
+        res = <a href="javascript:void(0)" className={`${props.prefixCls}-status`} ref="viewMore" onClick={me.onClick.bind(me)}>{'loadText' in props ? props.loadText : lang.viewMore}</a>;
         break;
 
       case 'loading':
-        res = <a href="javascript:void(0)"><i className="icon-loading"></i>{'loadingText' in props ? props.loadingText : lang.loading}</a>;
+        res = <a href="javascript:void(0)" className={`${props.prefixCls}-status`}><i className={`${props.prefixCls}-icon-loading`}></i>{'loadingText' in props ? props.loadingText : lang.loading}</a>;
         break;
 
       case 'noMore':
-        res = <a href="javascript:void(0)" className="uxcore-load-more-noMore">{'noMoreText' in props ? props.noMoreText : lang.noMore}</a>;
+        res = <a href="javascript:void(0)" className={`${props.prefixCls}-status ${props.prefixCls}-noMore`}>{'noMoreText' in props ? props.noMoreText : lang.noMore}</a>;
         break;
     }
 
@@ -132,7 +131,7 @@ class LoadMore extends React.Component {
       props = me.props;
 
     return (
-      <div className={classnames("uxcore-load-more", {
+      <div className={classnames(props.prefixCls, {
         [props.className] : !!props.className
       })}>{me._renderLoadStatus()}</div>
     );
@@ -140,6 +139,7 @@ class LoadMore extends React.Component {
 }
 
 LoadMore.defaultProps = {
+  prefixCls: 'kuma-load-more',
   status: 'loaded',
   className: '',
   trigger: ['view', 'click'],
@@ -151,6 +151,7 @@ LoadMore.defaultProps = {
 
 // http://facebook.github.io/react/docs/reusable-components.html
 LoadMore.propTypes = {
+  prefixCls: React.PropTypes.string,
   status: React.PropTypes.oneOf(['loaded', 'loading', 'noMore']),
   className: React.PropTypes.string,
   trigger: React.PropTypes.array,
