@@ -72,7 +72,7 @@ http://uxcore.github.io/
 
 | 配置项 | 类型 | 必填 | 默认值 | 功能/备注 |
 |---|---|---|---|---|
-|status|string|optional|'load'|表示加载状态。'load'表示待加载；'loading'表示加载中；'noMore'表示没有更多|
+|status|string|optional|'loaded'|表示加载状态。'loaded'表示加载完成，待下次加载；'loading'表示加载中；'noMore'表示没有更多|
 |className|string|optional|''|额外的className|
 |trigger|array|optional|['view', 'click']|触发加载回调的途径。view表示看到即触发；click表示点击触发|
 |onLoadMore|function|required|-|加载回调|需要在该方法中手动控制status改变|

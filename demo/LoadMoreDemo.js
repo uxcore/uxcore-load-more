@@ -17,7 +17,7 @@ class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loadState: 'load', // loading noMore
+      loadState: 'loaded', // loading noMore
       lines: []
     }
   }
@@ -39,7 +39,7 @@ class Demo extends React.Component {
 
         me.setState({
           lines: lines,
-          loadState: 'load'
+          loadState: 'loaded'
         })
       } else {
         me.setState({

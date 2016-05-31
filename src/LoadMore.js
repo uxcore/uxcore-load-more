@@ -10,7 +10,7 @@
 
 const React = require('react');
 const classnames = require('classnames');
-const Lang = require('./i18n');
+const lang = require('./i18n');
 
 let scrollTimer;
 
@@ -19,7 +19,7 @@ class LoadMore extends React.Component {
   constructor(props) {
     super(props);
 
-    this.lang = Lang[props.locale.toLocaleLowerCase()];
+    this.lang = lang[props.locale.toLocaleLowerCase()];
   }
 
   componentDidMount() {
@@ -110,7 +110,7 @@ class LoadMore extends React.Component {
       res;
 
     switch (props.status) {
-      case 'load':
+      case 'loaded':
         res = <a href="javascript:void(0)" ref="viewMore" onClick={me.onClick.bind(me)}>{'loadText' in props ? props.loadText : lang.viewMore}</a>;
         break;
 
@@ -140,7 +140,7 @@ class LoadMore extends React.Component {
 }
 
 LoadMore.defaultProps = {
-  status: 'load',
+  status: 'loaded',
   className: '',
   trigger: ['view', 'click'],
   onLoadMore: () => {},
@@ -151,7 +151,7 @@ LoadMore.defaultProps = {
 
 // http://facebook.github.io/react/docs/reusable-components.html
 LoadMore.propTypes = {
-  status: React.PropTypes.oneOf(['load', 'loading', 'noMore']),
+  status: React.PropTypes.oneOf(['loaded', 'loading', 'noMore']),
   className: React.PropTypes.string,
   trigger: React.PropTypes.array,
   onLoadMore: React.PropTypes.func,
