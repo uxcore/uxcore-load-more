@@ -7,6 +7,7 @@
  */
 
 const React = require('react');
+const PropTypes = require('prop-types');
 const classnames = require('classnames');
 const Lang = require('./i18n');
 
@@ -176,13 +177,13 @@ LoadMore.defaultProps = {
 
 // http://facebook.github.io/react/docs/reusable-components.html
 LoadMore.propTypes = {
-  prefixCls: React.PropTypes.string,
-  status: React.PropTypes.oneOf(['loaded', 'loading', 'noMore']),
-  className: React.PropTypes.string,
-  trigger: React.PropTypes.array,
-  onLoadMore: React.PropTypes.func,
-  locale: React.PropTypes.oneOf(['zh-cn', 'en-us']),
-  viewLoadDelay: React.PropTypes.number,
+  prefixCls: PropTypes.string,
+  status: PropTypes.oneOf(['loaded', 'loading', 'noMore']),
+  className: PropTypes.string,
+  trigger: PropTypes.array,
+  onLoadMore: PropTypes.func,
+  locale: PropTypes.oneOf(['zh-cn', 'en-us']),
+  viewLoadDelay: PropTypes.number,
 };
 
 LoadMore.displayName = 'LoadMore';
