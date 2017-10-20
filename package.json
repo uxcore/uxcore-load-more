@@ -18,7 +18,8 @@
     "chrome": "uxcore-tools run chrome",
     "browsers": "uxcore-tools run browsers",
     "saucelabs": "uxcore-tools run saucelabs",
-    "update": "uxcore-tools run update"
+    "update": "uxcore-tools run update",
+    "tnpm-update": "uxcore-tools run tnpm-update"
   },
   "bugs": {
     "url": "http://github.com/uxcore/uxcore-load-more/issues"
@@ -32,19 +33,21 @@
   ],
   "devDependencies": {
     "console-polyfill": "^0.2.2",
-    "enzyme": "^2.8.0",
+    "enzyme": "^3.0.0",
+    "enzyme-adapter-react-15": "^1.0.0",
     "es5-shim": "^4.5.8",
     "expect.js": "~0.3.1",
     "kuma-base": "1.x",
-    "react": "0.14.x",
-    "react-addons-test-utils": "0.14.x",
-    "react-dom": "0.14.x",
-    "uxcore-kuma": "2.x",
+    "react": "15.x",
+    "react-dom": "15.x",
+    "react-test-renderer": "15.x",
+    "uxcore-kuma": "*",
     "uxcore-tools": "0.2.x"
   },
   "dependencies": {
     "classnames": "^2.1.2",
-    "object-assign": "^4.0.0"
+    "object-assign": "^4.0.0",
+    "prop-types": "15.x"
   },
   "contributors": [],
   "license": "MIT"

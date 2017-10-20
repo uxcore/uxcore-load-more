@@ -1,7 +1,11 @@
 import expect from 'expect.js';
 import React from 'react';
-import { mount } from 'enzyme';
+import ReactDOM from 'react-dom';
+import Enzyme, { mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-15';
 import LoadMore from '../src';
+
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('LoadMore', () => {
   it('render correct', () => {
@@ -14,32 +18,32 @@ describe('Props', () => {
 
   it('className support', () => {
     wrapper = mount(<LoadMore className="test" />);
-    expect(wrapper.component.getDOMNode().className).to.be('kuma-load-more test');
+    expect(wrapper.hasClass('kuma-load-more test'));
   });
 
   it('prefixCls support', () => {
     wrapper = mount(<LoadMore prefixCls="test" />);
-    expect(wrapper.component.getDOMNode().className).to.be('test');
+    expect(wrapper.hasClass('test'));
   });
-
 });
+
 
 describe('Locale', () => {
   let wrapper;
 
   it('loaded support', () => {
     wrapper = mount(<LoadMore locale="en-us" status="loaded" />);
-    expect(wrapper.component.getDOMNode().innerText).to.be('View More');
+    expect(wrapper.find('.kuma-load-more-status').text()).to.be('View More');
   });
 
   it('loading support', () => {
     wrapper = mount(<LoadMore locale="en-us" status="loading" />);
-    expect(wrapper.component.getDOMNode().innerText).to.be('Loading');
+    expect(wrapper.find('.kuma-load-more-status').text()).to.be('Loading');
   });
 
   it('noMore support', () => {
     wrapper = mount(<LoadMore locale="en-us" status="noMore" />);
-    expect(wrapper.component.getDOMNode().innerText).to.be('No More');
+    expect(wrapper.find('.kuma-load-more-status').text()).to.be('No More');
   });
 });
 
@@ -48,19 +52,20 @@ describe('Overlay Text', () => {
 
   it('loadText support', () => {
     wrapper = mount(<LoadMore loadText="load text" />);
-    expect(wrapper.component.getDOMNode().innerText).to.be('load text');
+    expect(wrapper.find('.kuma-load-more-status').text()).to.be('load text');
   });
 
   it('loadingText support', () => {
     wrapper = mount(<LoadMore loadingText="loading text" status="loading" />);
-    expect(wrapper.component.getDOMNode().innerText).to.be('loading text');
+    expect(wrapper.find('.kuma-load-more-status').text()).to.be('loading text');
   });
 
   it('noMoreText support', () => {
     wrapper = mount(<LoadMore noMoreText="no more text" status="noMore" />);
-    expect(wrapper.component.getDOMNode().innerText).to.be('no more text');
+    expect(wrapper.find('.kuma-load-more-status').text()).to.be('no more text');
   });
 });
+
 
 describe('Load', () => {
   let wrapper;
@@ -93,7 +98,7 @@ describe('Load', () => {
     wrapper.find('a').simulate('click');
     expect(loadTimes).to.be(1);
   });
-
+  
   it('scroll load support', () => {
     let loadTimes = 0;
 
@@ -106,7 +111,7 @@ describe('Load', () => {
     />);
     expect(loadTimes).to.be(1);
 
-    wrapper.node.onScroll();
+    wrapper.instance().onScroll();
 
     window.setTimeout(() => {
       expect(loadTimes).to.be(2);
@@ -125,7 +130,7 @@ describe('Load', () => {
     />);
     expect(loadTimes).to.be(1);
 
-    wrapper.node.onScrollStop();
+    wrapper.instance().onScrollStop();
 
     expect(loadTimes).to.be(2);
   });
