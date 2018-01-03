@@ -112,6 +112,7 @@ describe('Load', () => {
     expect(loadTimes).to.be(1);
 
     wrapper.instance().onScroll();
+    wrapper.instance().onScroll();
 
     window.setTimeout(() => {
       expect(loadTimes).to.be(2);
