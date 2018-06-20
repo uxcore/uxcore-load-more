@@ -6,10 +6,8 @@
  * All rights reserved.
  */
 
-const React = require('react');
-const classnames = require('classnames');
-
-const LoadMore = require('../src');
+import React from 'react';
+import LoadMore from '../src';
 
 let loadTimes = 0;
 
@@ -35,7 +33,10 @@ class Demo extends React.Component {
 
       if (++loadTimes < 5) {
         for (let i = 0; i < 50; i++) {
-          lines.push(<p key={`${loadTimes}-${i}`}>第{loadTimes}次加载，当前是第{i + 1}条数据</p>);
+          lines.push({
+            loadTimes: loadTimes,
+            i : i,
+          })
         }
 
         me.setState({
@@ -68,7 +69,9 @@ class Demo extends React.Component {
 
     return (
       <div className="demo-content">
-        {me.state.lines}
+        {me.state.lines.map((item) => {
+          return <p key={`${item.loadTimes}-${item.i}`}>第{item.loadTimes}次加载，当前是第{item.i + 1}条数据</p>
+        })}
         <LoadMore {...props} />
       </div>
     );
