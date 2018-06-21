@@ -6,10 +6,10 @@
  * All rights reserved.
  */
 
-const React = require('react');
-const PropTypes = require('prop-types');
-const classnames = require('classnames');
-const Lang = require('./i18n');
+import React from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import Lang from './i18n';
 
 let scrollTimer;
 
