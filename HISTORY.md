@@ -1,5 +1,9 @@
 # history
 
+## 0.1.4
+
+`CHANGED` support js style export
+
 ## 0.1.3
 
 * `CHANGED` fit React@15
