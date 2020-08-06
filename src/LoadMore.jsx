@@ -50,7 +50,7 @@ class LoadMore extends React.Component {
 
     if (hasView && typeof window === 'object') {
       if (window.addEventListener) {
-        window.addEventListener('scroll', me.onScroll.bind(me));
+        window.addEventListener('scroll', me.onScroll.bind(me), true);
       } else if (window.attachEvent) {
         window.attachEvent('onscroll', me.onScroll.bind(me));
       }
